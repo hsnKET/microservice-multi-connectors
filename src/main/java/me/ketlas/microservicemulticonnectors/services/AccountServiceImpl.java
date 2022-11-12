@@ -14,6 +14,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -51,7 +53,7 @@ public class AccountServiceImpl implements AccountService {
 
         Account tempAccount = accountMapper.toAccount(accountRequestDTO);
         tempAccount.setId(UUID.randomUUID().toString());
-        tempAccount.setDate(new Date());
+        tempAccount.setDate(new Date().getTime());
         Account savedAccount = accountRepository.save(tempAccount);
         return accountMapper.toAccountResponse(savedAccount);
     }

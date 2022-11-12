@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 
 @Data
@@ -13,7 +13,7 @@ import java.util.Date;
 public class AccountResponseDTO {
 
     private String id;
-    private Date date;
+    private Long date;
     private String firstName;
     private String lastName;
     private String email;

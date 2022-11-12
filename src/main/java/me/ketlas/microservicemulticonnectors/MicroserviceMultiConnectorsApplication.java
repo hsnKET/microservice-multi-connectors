@@ -1,6 +1,7 @@
 package me.ketlas.microservicemulticonnectors;
 
 import com.github.javafaker.Faker;
+
 import me.ketlas.microservicemulticonnectors.dtos.AccountRequestDTO;
 import me.ketlas.microservicemulticonnectors.services.AccountService;
 import org.springframework.boot.CommandLineRunner;
@@ -13,6 +14,7 @@ public class MicroserviceMultiConnectorsApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(MicroserviceMultiConnectorsApplication.class, args);
+
     }
 
     @Bean

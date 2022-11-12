@@ -10,6 +10,7 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
+import java.time.temporal.ChronoField;
 import java.util.stream.Collectors;
 
 @Endpoint
@@ -84,7 +85,7 @@ public class AccountSoapEndpoint {
         savedAccountResponse.setFirstName(myAcc.getFirstName());
         savedAccountResponse.setLastName(myAcc.getLastName());
         savedAccountResponse.setEmail(myAcc.getEmail());
-        savedAccountResponse.setDate(myAcc.getDate().getTime());
+        savedAccountResponse.setDate(myAcc.getDate());
         savedAccountResponse.setTel(myAcc.getTel());
 
         return savedAccountResponse;
@@ -97,7 +98,7 @@ public class AccountSoapEndpoint {
         account.setFirstName(myAcc.getFirstName());
         account.setLastName(myAcc.getLastName());
         account.setEmail(myAcc.getEmail());
-        account.setDate(myAcc.getDate().getTime());
+        account.setDate(myAcc.getDate());
         account.setTel(myAcc.getTel());
 
         return account;

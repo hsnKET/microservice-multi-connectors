@@ -9,6 +9,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Date;
 
 
@@ -21,8 +24,7 @@ public class Account {
 
     @Id
     private String id;
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date date;
+    private Long date;
     private String firstName;
     private String lastName;
     private String email;

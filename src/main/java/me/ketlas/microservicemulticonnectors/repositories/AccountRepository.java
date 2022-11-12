@@ -15,7 +15,5 @@ import java.util.Date;
 
 
 public interface AccountRepository extends JpaRepository<Account,String> {
-
     Account findAccountByEmail(String email);
-
 }

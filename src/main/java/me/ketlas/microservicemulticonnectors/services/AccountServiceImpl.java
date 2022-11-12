@@ -97,7 +97,4 @@ public class AccountServiceImpl implements AccountService {
 
     }
 
-    private boolean isUserAccountExist(String id){
-        return accountRepository.findById(id).orElse(null) != null;
-    }
 }

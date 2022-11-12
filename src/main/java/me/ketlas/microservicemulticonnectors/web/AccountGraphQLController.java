@@ -42,6 +42,4 @@ public class AccountGraphQLController {
          accountService.deleteAccount(id);
     }
 
-
-
 }

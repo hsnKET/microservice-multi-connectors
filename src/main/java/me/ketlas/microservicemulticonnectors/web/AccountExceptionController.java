@@ -23,6 +23,4 @@ public class AccountExceptionController {
                 ,new HttpHeaders(),HttpStatus.NOT_FOUND);
     }
 
-
-
 }

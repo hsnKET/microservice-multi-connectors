@@ -17,6 +17,4 @@ public class AccountRequestDTO {
     private String lastName;
     private String email;
     private String tel;
-
-
 }

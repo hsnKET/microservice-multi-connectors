@@ -16,6 +16,4 @@ public class AccountResponseDTO {
     private String lastName;
     private String email;
     private String tel;
-
-
 }

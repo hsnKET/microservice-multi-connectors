@@ -26,7 +26,7 @@ public class AccountSoapEndpoint {
 
         AccountsResponse accountsResponse = new AccountsResponse();
         AccountPageDTO accountPageDTO = accountService.listAccount(account.size,account.page);
-        accountsResponse.accounts = accountPageDTO.getAccountResponses().stream()
+        accountsResponse.accounts = accountPageDTO.getAccounts().stream()
                 .map(accountResponse -> {
                     Account acc = toSoapAccount(accountResponse);
                     return acc;

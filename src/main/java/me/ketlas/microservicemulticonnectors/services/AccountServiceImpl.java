@@ -35,7 +35,7 @@ public class AccountServiceImpl implements AccountService {
         AccountPageDTO accountPageDTO = AccountPageDTO.builder()
                 .page(page)
                 .totalPages(pageAccounts.getTotalPages())
-                .accountResponses(accounts.stream()
+                .accounts(accounts.stream()
                         .map(account -> accountMapper.toAccountResponse(account))
                         .collect(Collectors.toList()))
                 .build();

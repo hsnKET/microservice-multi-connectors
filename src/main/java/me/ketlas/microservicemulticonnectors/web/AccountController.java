@@ -36,6 +36,11 @@ public class AccountController {
         return accountService.updateAccount(id, accountRequestDTO);
     }
 
+    @DeleteMapping("/accounts/{id}")
+    public void updateAccount(@PathVariable(name =  "id") String id){
+         accountService.deleteAccount(id);
+    }
+
 
 
 }

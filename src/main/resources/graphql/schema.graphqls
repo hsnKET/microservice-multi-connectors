@@ -1,0 +1,31 @@
+type Query{
+    accounts(page : Int, size : Int):AccountPageDTO,
+    accountDetail(id:ID):Account
+}
+
+type Mutation{
+    saveAccount(accountRequestDTO : AccountRequest):Account,
+    updateAccount(id:ID, accountRequestDTO : AccountRequest):Account,
+    deleteAccount(id:ID):String
+}
+
+type AccountPageDTO{
+    page : Int,
+    totalPage : Int,
+    accounts : [Account]
+}
+type Account {
+    id : ID,
+    firstName : String,
+    lastName : String,
+    email : String,
+    tel : String
+    date : Float
+}
+
+input AccountRequest {
+    firstName : String,
+    lastName : String,
+    email : String,
+    tel : String
+}

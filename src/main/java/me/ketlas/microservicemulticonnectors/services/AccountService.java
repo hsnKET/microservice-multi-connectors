@@ -1,18 +1,15 @@
 package me.ketlas.microservicemulticonnectors.services;
 
 import me.ketlas.microservicemulticonnectors.dtos.AccountPageDTO;
-import me.ketlas.microservicemulticonnectors.dtos.AccountRequest;
-import me.ketlas.microservicemulticonnectors.dtos.AccountResponse;
-import me.ketlas.microservicemulticonnectors.entities.Account;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import me.ketlas.microservicemulticonnectors.dtos.AccountRequestDTO;
+import me.ketlas.microservicemulticonnectors.dtos.AccountResponseDTO;
 
 public interface AccountService {
 
     AccountPageDTO listAccount(int size, int page);
-    AccountResponse saveAccount(AccountRequest accountRequest);
-    AccountResponse updateAccount(String id,AccountRequest accountRequest);
-    AccountResponse accountDetails(String id);
+    AccountResponseDTO saveAccount(AccountRequestDTO accountRequestDTO);
+    AccountResponseDTO updateAccount(String id, AccountRequestDTO accountRequestDTO);
+    AccountResponseDTO accountDetails(String id);
     void deleteAccount(String id);
 
 }

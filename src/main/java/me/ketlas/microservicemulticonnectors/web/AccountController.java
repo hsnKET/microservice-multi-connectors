@@ -1,16 +1,11 @@
 package me.ketlas.microservicemulticonnectors.web;
 
 import me.ketlas.microservicemulticonnectors.dtos.AccountPageDTO;
-import me.ketlas.microservicemulticonnectors.dtos.AccountRequest;
-import me.ketlas.microservicemulticonnectors.dtos.AccountResponse;
-import me.ketlas.microservicemulticonnectors.exceptions.AccountNotFoundException;
+import me.ketlas.microservicemulticonnectors.dtos.AccountRequestDTO;
+import me.ketlas.microservicemulticonnectors.dtos.AccountResponseDTO;
 import me.ketlas.microservicemulticonnectors.services.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.request.WebRequest;
 
 @RestController
 public class AccountController {
@@ -26,19 +21,19 @@ public class AccountController {
     }
 
     @GetMapping("/accounts/{id}")
-    public AccountResponse accountDetail(@PathVariable(name = "id") String id){
+    public AccountResponseDTO accountDetail(@PathVariable(name = "id") String id){
         return accountService.accountDetails(id);
     }
 
     @PostMapping("/accounts")
-    public AccountResponse saveAccount(@RequestBody AccountRequest accountRequest){
-        return accountService.saveAccount(accountRequest);
+    public AccountResponseDTO saveAccount(@RequestBody AccountRequestDTO accountRequestDTO){
+        return accountService.saveAccount(accountRequestDTO);
     }
 
     @PutMapping("/accounts/{id}")
-    public AccountResponse updateAccount(@PathVariable(name =  "id") String id,
-                                         @RequestBody AccountRequest accountRequest){
-        return accountService.updateAccount(id,accountRequest);
+    public AccountResponseDTO updateAccount(@PathVariable(name =  "id") String id,
+                                            @RequestBody AccountRequestDTO accountRequestDTO){
+        return accountService.updateAccount(id, accountRequestDTO);
     }
 
 

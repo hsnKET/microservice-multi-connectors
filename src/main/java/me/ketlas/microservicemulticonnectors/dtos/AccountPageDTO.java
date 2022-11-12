@@ -15,5 +15,5 @@ public class AccountPageDTO {
 
     private int page;
     private int totalPages;
-    private List<AccountResponse> accountResponses;
+    private List<AccountResponseDTO> accountResponses;
 }

@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class AccountRequest {
+public class AccountRequestDTO {
 
     private String firstName;
     private String lastName;

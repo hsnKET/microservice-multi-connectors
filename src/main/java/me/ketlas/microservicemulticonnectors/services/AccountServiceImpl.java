@@ -2,8 +2,8 @@ package me.ketlas.microservicemulticonnectors.services;
 
 import lombok.AllArgsConstructor;
 import me.ketlas.microservicemulticonnectors.dtos.AccountPageDTO;
-import me.ketlas.microservicemulticonnectors.dtos.AccountRequest;
-import me.ketlas.microservicemulticonnectors.dtos.AccountResponse;
+import me.ketlas.microservicemulticonnectors.dtos.AccountRequestDTO;
+import me.ketlas.microservicemulticonnectors.dtos.AccountResponseDTO;
 import me.ketlas.microservicemulticonnectors.entities.Account;
 import me.ketlas.microservicemulticonnectors.exceptions.AccountEmailAlreadyExistsException;
 import me.ketlas.microservicemulticonnectors.exceptions.AccountNotFoundException;
@@ -11,7 +11,6 @@ import me.ketlas.microservicemulticonnectors.mappers.AccountMapper;
 import me.ketlas.microservicemulticonnectors.repositories.AccountRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -44,13 +43,13 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public AccountResponse saveAccount(AccountRequest accountRequest) {
+    public AccountResponseDTO saveAccount(AccountRequestDTO accountRequestDTO) {
 
-        Account account = accountRepository.findAccountByEmail(accountRequest.getEmail());
+        Account account = accountRepository.findAccountByEmail(accountRequestDTO.getEmail());
         if (account != null)
-            throw new AccountEmailAlreadyExistsException(accountRequest.getEmail());
+            throw new AccountEmailAlreadyExistsException(accountRequestDTO.getEmail());
 
-        Account tempAccount = accountMapper.toAccount(accountRequest);
+        Account tempAccount = accountMapper.toAccount(accountRequestDTO);
         tempAccount.setId(UUID.randomUUID().toString());
         tempAccount.setDate(new Date());
         Account savedAccount = accountRepository.save(tempAccount);
@@ -58,24 +57,24 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public AccountResponse updateAccount(String id,AccountRequest accountRequest) {
+    public AccountResponseDTO updateAccount(String id, AccountRequestDTO accountRequestDTO) {
         Account account = accountRepository.findById(id).orElseThrow(() ->
                 new AccountNotFoundException(id));
 
-        if (accountRequest == null)
+        if (accountRequestDTO == null)
             return accountMapper.toAccountResponse(account);
 
-        if (accountRequest.getEmail() != null)
-            account.setEmail(accountRequest.getEmail());
+        if (accountRequestDTO.getEmail() != null)
+            account.setEmail(accountRequestDTO.getEmail());
 
-        if (accountRequest.getFirstName() != null)
-            account.setFirstName(accountRequest.getFirstName());
+        if (accountRequestDTO.getFirstName() != null)
+            account.setFirstName(accountRequestDTO.getFirstName());
 
-        if (accountRequest.getLastName() != null)
-            account.setLastName(accountRequest.getLastName());
+        if (accountRequestDTO.getLastName() != null)
+            account.setLastName(accountRequestDTO.getLastName());
 
-        if (accountRequest.getTel() != null)
-            account.setTel(accountRequest.getTel());
+        if (accountRequestDTO.getTel() != null)
+            account.setTel(accountRequestDTO.getTel());
 
         Account savedAccount = accountRepository.save(account);
 
@@ -83,7 +82,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public AccountResponse accountDetails(String id) {
+    public AccountResponseDTO accountDetails(String id) {
         Account account = accountRepository.findById(id).orElseThrow(() ->
                 new AccountNotFoundException(id));
         return accountMapper.toAccountResponse(account);
